@@ -3,10 +3,8 @@ if(!this['console']) {
   this['console'] = function (message) {};
 }
 var Batchler = {};
-Batchler.Operation = function (execute, succeeded, failed, handler) {
+Batchler.Operation = function (execute, handler) {
   this.execute = execute;
-  this.succeeded = succeeded;
-  this.failed = failed;
   this.handler = handler || false;
   return this;
 };
