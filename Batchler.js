@@ -4,9 +4,8 @@ if(!this['console']) {
 }
 var Batchler = {};
 Batchler.Operation = function (execute, success, fail) {
+  /* Execute function. This function is called by the operation's handler. The success and fail callbacks should include a call to the handler's callback function. */
   this.execute = execute;
-  this.success = success;
-  this.fail = fail;
   return this;
 };
 Batchler.Operations = {};
