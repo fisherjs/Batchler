@@ -3,21 +3,21 @@ if(!this['console']) {
   this['console'] = function (message) {};
 }
 var Batchler = {};
-Batchler.Operation = function (execute, success, fail) {
-  /* Execute function. This function is called by the operation's handler. The success and fail callbacks should include a call to the handler's callback function. */
+Batchler.Request = function (execute) {
+  /* Execute function. This function is called by the request's executer. The success and fail callbacks should include a call to the executer's callback function. */
   this.execute = execute;
   return this;
 };
-Batchler.Operations = {};
-/* Handles operations synchronously. */
-Batchler.Operations.SyncHandler = function () {
+Batchler.Requests = {};
+/* Executes requests synchronously. */
+Batchler.Requests.SyncExecuter = function () {
   var queue = [];
   var queueIndex = 0;
   var running = false;
   this.percentComplete = Math.round(((queueIndex / queue.length) * 100));
-  this.add = function (operation) {
-    q.push(operation);
-    console.log('Synchronous operation added.')
+  this.add = function (request) {
+    q.push(request);
+    console.log('Synchronous request added.')
   };
   this.callback = function (result) {
     if (queueIndex < queue.length) {
@@ -35,22 +35,22 @@ Batchler.Operations.SyncHandler = function () {
     if (running === false) {
       running = true;
       this.callback();
-      console.log('Sync handler running.');
+      console.log('Sync executer running.');
     }
   };
   this.complete = function () {
-    console.log('Sync handler operations complete.')
+    console.log('Sync executer requests complete.')
   };
   return this;
 };
-/* Handles operations asynchronously. */
-Batchler.Operations.AsyncHandler = function () {
+/* Executes requests asynchronously. */
+Batchler.Requests.AsyncExecuter = function () {
   var queue = [];
   var completed = 0;
   var running = false;
-  this.add = function (operation) {
-    console.log('Asynchronous operation added.');
-    queue.push(operation);
+  this.add = function (request) {
+    console.log('Asynchronous request added.');
+    queue.push(request);
   };
   this.callback = function (result) {
     if (completed < queue.length) {
@@ -69,11 +69,11 @@ Batchler.Operations.AsyncHandler = function () {
       for (var ii in queue) {
         queue[ii].execute();
       }
-      console.log('Async handler running.')
+      console.log('Async executer running.')
     }
   };
   this.complete = function () {
-    console.log('Async handler operations complete.')
+    console.log('Async executer requests complete.')
   };
   return this;
 };
