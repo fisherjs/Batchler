@@ -3,7 +3,8 @@ if(!this['console']) {
   this['console'] = function (message) {};
 }
 var Batchler = {};
-Batchler.Request = function (execute) {
+Batchler.Request = function (executer) {
+  var exec = executer;
   /* Execute function. This function is called by the request's executer. The success and fail callbacks should include a call to the executer's callback function. */
   this.execute = execute;
   return this;
