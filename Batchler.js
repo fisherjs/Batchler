@@ -27,7 +27,7 @@ Batchler.Requests.SyncExecuter = function () {
       this.complete();
     }
 	if (queueIndex < queue.length) {
-      queue[queueIndex].execute();
+      queue[queueIndex].execute(this);
       queueIndex += 1;
     }
   };
@@ -67,7 +67,7 @@ Batchler.Requests.AsyncExecuter = function () {
     if (running === false) {
       running = true;
       for (var ii in queue) {
-        queue[ii].execute();
+        queue[ii].execute(this);
       }
       console.log('Async executer running.')
     }
