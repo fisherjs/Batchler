@@ -23,10 +23,10 @@ Batchler.Requests.SyncExecuter = function () {
     if (result) {
       console.log(result);
     }
-	if (queueIndex == queue.length) {
+    if (queueIndex == queue.length) {
       this.complete();
     }
-	if (queueIndex < queue.length) {
+    if (queueIndex < queue.length) {
       queue[queueIndex].execute(this);
       queueIndex += 1;
     }
@@ -34,7 +34,7 @@ Batchler.Requests.SyncExecuter = function () {
   this.run = function () {
     if (running === false) {
       running = true;
-	  console.log('Sync executer running.');
+      console.log('Sync executer running.');
       this.callback();
     }
   };
@@ -53,10 +53,10 @@ Batchler.Requests.AsyncExecuter = function () {
     queue.push(request);
   };
   this.callback = function (result) {
-	if (result) {
+    if (result) {
       console.log(result);
     }
-	if (completed == queue.length) {
+    if (completed == queue.length) {
       this.complete();
     }
     if (completed < queue.length) {
