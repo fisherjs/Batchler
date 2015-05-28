@@ -48,6 +48,7 @@ Batchler.Requests.AsyncExecuter = function () {
   var queue = [];
   var completed = 0;
   var running = false;
+  this.percentComplete = Math.round(((completed / queue.length) * 100));
   this.add = function (request) {
     console.log('Asynchronous request added.');
     queue.push(request);
