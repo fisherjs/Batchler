@@ -16,26 +16,26 @@ Batchler.Requests.SyncExecuter = function () {
   var running = false;
   this.percentComplete = Math.round(((queueIndex / queue.length) * 100));
   this.add = function (request) {
-    q.push(request);
+    queue.push(request);
     console.log('Synchronous request added.')
   };
   this.callback = function (result) {
-    if (queueIndex < queue.length) {
+    if (result) {
+      console.log(result);
+    }
+	if (queueIndex == queue.length) {
+      this.complete();
+    }
+	if (queueIndex < queue.length) {
       queue[queueIndex].execute();
       queueIndex += 1;
-      if (queueIndex == queue.length) {
-        this.complete();
-      }
-      if (result) {
-        console.log(result);
-      }
     }
   };
   this.run = function () {
     if (running === false) {
       running = true;
+	  console.log('Sync executer running.');
       this.callback();
-      console.log('Sync executer running.');
     }
   };
   this.complete = function () {
@@ -53,14 +53,14 @@ Batchler.Requests.AsyncExecuter = function () {
     queue.push(request);
   };
   this.callback = function (result) {
+	if (result) {
+      console.log(result);
+    }
+	if (completed == queue.length) {
+      this.complete();
+    }
     if (completed < queue.length) {
       completed++;
-      if (completed == queue.length) {
-        this.complete();
-      }
-      if (result) {
-        console.log(result);
-      }
     }
   };
   this.run = function () {
