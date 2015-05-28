@@ -1,12 +1,11 @@
-/* Batchler.js, (c) 2015, Michael Fisher, v. 0.0.0.x */
+/* Batchler.js, (c) 2015, Michael Fisher, v. 0.0.0 */
 if(!this['console']) {
   this['console'] = function (message) {};
 }
 var Batchler = {};
-Batchler.Request = function (executer) {
-  var exec = executer;
+Batchler.Request = function () {
   /* Execute function. This function is called by the request's executer. The success and fail callbacks should include a call to the executer's callback function. */
-  this.execute = execute;
+  this.execute = null;
   return this;
 };
 Batchler.Requests = {};
