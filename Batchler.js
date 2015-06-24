@@ -4,8 +4,18 @@ if(!this['console']) {
 }
 var Batchler = {};
 Batchler.Request = function () {
-  /* Execute function. This function is called by the request's executer. The success and fail callbacks should include a call to the executer's callback function. */
-  this.execute = null;
+  this.execute = function(executer) {
+    function success() {
+      if(executer) {
+        executer.callback('Success');
+      }
+    }
+    function fail() {
+      if(executer) {
+        executer.callback('Fail');
+      }
+    }
+  };
   return this;
 };
 Batchler.Requests = {};
