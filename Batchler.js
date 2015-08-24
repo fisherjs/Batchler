@@ -20,7 +20,7 @@ Batchler.Request = function () {
 };
 Batchler.Requests = {};
 /* Executes requests synchronously. */
-Batchler.Requests.SyncExecuter = function () {
+Batchler.SyncExecuter = function () {
   var queue = [];
   var queueIndex = 0;
   var running = false;
@@ -54,7 +54,7 @@ Batchler.Requests.SyncExecuter = function () {
   return this;
 };
 /* Executes requests asynchronously. */
-Batchler.Requests.AsyncExecuter = function () {
+Batchler.AsyncExecuter = function () {
   var queue = [];
   var completed = 0;
   var running = false;
