@@ -34,6 +34,7 @@ Batchler.SyncExecuter = function () {
       console.log(result);
     }
     if (queueIndex == queue.length) {
+      running = false;
       this.complete();
     }
     if (queueIndex < queue.length) {
@@ -49,7 +50,6 @@ Batchler.SyncExecuter = function () {
     }
   };
   this.complete = function () {
-    running = false;
     console.log('Sync executer requests complete.')
   };
   return this;
@@ -69,6 +69,7 @@ Batchler.AsyncExecuter = function () {
       console.log(result);
     }
     if (completed == queue.length) {
+      running = false;
       this.complete();
     }
     if (completed < queue.length) {
@@ -85,7 +86,6 @@ Batchler.AsyncExecuter = function () {
     }
   };
   this.complete = function () {
-    running = false;
     console.log('Async executer requests complete.')
   };
   return this;
