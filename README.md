@@ -1,4 +1,5 @@
 # Batchler
-Batchler.js is a tool to help manage batches of client side server requests, both synchronously and asynchronously. Batchler can be extended by adding objects to the Batchler.Requests namespace. 
+Batchler.js is a tool to help you, synchronously or asynchronously, execute your request functions. Batchler.js is easy to use and understand. You can add your commonly used functions to the Batchler.Requests namespace, create request objects from those, and execute them sync or async using the appropriate executer object. You can also run a series of executers together. 
 
-Example: 
+EXAMPLE - JSFiddle
+https://jsfiddle.net/michaelfisher1988/6u0jy0xf/
