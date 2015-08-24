@@ -1,4 +1,4 @@
-/* Batchler.js, (c) 2015, Michael Fisher, v. 0.0.0 */
+/* Batchler.js, (c) 2015, Michael Fisher, v. 1.0.0 */
 if(!this['console']) {
   this['console'] = function (message) {};
 }
@@ -49,6 +49,7 @@ Batchler.SyncExecuter = function () {
     }
   };
   this.complete = function () {
+    running = false;
     console.log('Sync executer requests complete.')
   };
   return this;
@@ -84,6 +85,7 @@ Batchler.AsyncExecuter = function () {
     }
   };
   this.complete = function () {
+    running = false;
     console.log('Async executer requests complete.')
   };
   return this;
